@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinTrust | Because Trade Finance Should Just Work</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: #00012a;
             color: #E0E1DD;
             margin: 0;
@@ -14,6 +16,8 @@
             text-align: center;
             overflow-x: hidden;
             display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .video-container {
             position: fixed;
@@ -35,90 +39,49 @@
             padding: 40px;
         }
         .company-name {
-            font-size: 5em;
-            font-weight: bold;
-            color: #E0E1DD;
-            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
-            background: rgba(0, 1, 42, 0.6);
-            padding: 20px 40px;
-            border-radius: 10px;
+            font-size: 4em;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(45deg, rgba(0, 1, 42, 0.8), rgba(13, 27, 42, 0.6));
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: inline-block;
             margin-bottom: 30px;
         }
         .tagline {
-            font-size: 1.8em;
+            font-size: 1.5em;
+            font-weight: 300;
             color: #86BBD8;
-            margin: 50px 0;
+            margin: 20px 0 50px;
+            opacity: 0.8;
         }
         .section {
-            padding: 80px 0;
+            padding: 100px 0;
             font-size: 1.2em;
             cursor: pointer;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, background 0.5s ease-in-out;
             position: relative;
+            border-radius: 20px;
+        }
+        .section:hover {
+            transform: scale(1.02);
         }
         .section:nth-child(even) {
-            background: linear-gradient(to right, rgba(13, 27, 42, 0.9), rgba(0, 1, 42, 0.8));
-            border-radius: 80px;
-            margin: 50px 0;
+            background: radial-gradient(circle, rgba(0, 1, 42, 0.6), rgba(13, 27, 42, 0.9));
             padding: 80px;
         }
         .section:nth-child(odd) {
-            background: linear-gradient(to left, rgba(13, 27, 42, 0.9), rgba(0, 1, 42, 0.8));
-            border-radius: 80px;
-            margin: 50px 0;
+            background: radial-gradient(circle, rgba(13, 27, 42, 0.8), rgba(0, 1, 42, 0.7));
             padding: 80px;
         }
-        .popup {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: gold;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-            color: #000;
-            opacity: 0;
-            animation: popUp 1.5s ease-out forwards;
-        }
-        @keyframes popUp {
-            0% { opacity: 0; transform: scale(0.5) translateY(20px); }
-            50% { opacity: 1; transform: scale(1.2) translateY(-10px); }
-            100% { opacity: 0; transform: scale(0.8) translateY(-30px); }
-        }
-        .contact a {
-            color: #86BBD8;
-            text-decoration: none;
-            font-size: 1.5em;
-            display: block;
-            margin: 20px 0;
-            transition: color 0.3s;
-        }
-        .contact a:hover {
-            color: #FFFFFF;
-        }
-        .footer {
-            padding: 40px;
-            font-size: 1.1em;
-            color: #A0A2A6;
-        }
     </style>
-    <script>
-        function popUpEffect(section, text) {
-            for (let i = 0; i < 10; i++) {
-                let popup = document.createElement("div");
-                popup.className = "popup";
-                popup.innerText = text;
-                section.appendChild(popup);
-                popup.style.left = Math.random() * 90 + "%";
-                popup.style.top = Math.random() * 90 + "%";
-                setTimeout(() => popup.remove(), 1500);
-            }
-        }
-    </script>
 </head>
 <body>
+    <audio autoplay loop>
+        <source src="mixkit-deep-urban-623.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <div class="video-container">
         <video autoplay loop muted playsinline>
             <source src="fintrust_logo.mp4" type="video/mp4">
@@ -127,34 +90,49 @@
     </div>
     <div class="content">
         <div class="company-name">FinTrust</div>
-        <div class="tagline">Because Trade Finance Should Just Work.</div>
-        <div class="section" onclick="popUpEffect(this, '⚡ Efficiency')">
+        <div class="tagline">Because Trade Finance Should Just Work. 💫</div>
+        <div class="section" onclick="popUpEffect(this, '⚠️Challenges')">
             <h2>Industry Problems</h2>
-            <p>Global trade finance faces inefficiencies, fraud, and high costs, creating a $1.7 trillion financing gap.</p>
+            <p>Trade finance faces systemic inefficiencies, high costs, and security vulnerabilities, leading to a $1.7 trillion financing gap:</p>
+            <ul>
+                <li>📄 Excessive manual paperwork slows down processing times, taking weeks instead of hours.</li>
+                <li>🔍 Fraud risks: counterfeit invoices, identity fraud, and double financing scams.</li>
+                <li>💰 High intermediary fees increase costs, limiting SME participation.</li>
+                <li>🌎 Global regulatory fragmentation complicates cross-border transactions.</li>
+                <li>🖥️ Lack of digitalization leads to inefficient reconciliation and processing delays.</li>
+            </ul>
         </div>
-        <div class="section" onclick="popUpEffect(this, '💰 $1.7T Market')">
+        <div class="section" onclick="popUpEffect(this, '💡Innovation')">
+            <h2>What is FinTrust?</h2>
+            <p>FinTrust is a blockchain-powered trade finance ecosystem designed to enhance transparency, reduce fraud, and unlock liquidity for global trade.</p>
+        </div>
+        <div class="section" onclick="popUpEffect(this, '🚀Speed')">
+            <h2>Features</h2>
+            <ul>
+                <li>Real-time transaction tracking with blockchain</li>
+                <li>Automated compliance & fraud detection using AI</li>
+                <li>Smart contract-enabled financing for instant settlements</li>
+                <li>Decentralized trade network connecting global partners</li>
+            </ul>
+        </div>
+        <div class="section" onclick="popUpEffect(this, '💰$1.7T')">
             <h2>Market Opportunity</h2>
             <ul>
-                <li>Global trade finance market: $8 trillion annually</li>
-                <li>$1.7 trillion in unmet financing needs</li>
-                <li>90% of banks are exploring blockchain solutions</li>
+                <li>📊 The global trade finance market is valued at $8 trillion annually.</li>
+                <li>📉 $1.7 trillion in unmet financing needs restricts trade expansion.</li>
+                <li>🏦 90% of banks are exploring blockchain solutions to modernize operations.</li>
+                <li>🌍 Emerging markets require improved access to financing solutions.</li>
             </ul>
         </div>
-        <div class="section" onclick="popUpEffect(this, '🔗 Blockchain Secure')">
+        <div class="section" onclick="popUpEffect(this, '🔗Security')">
             <h2>Technical Feasibility</h2>
             <ul>
-                <li>Built on Hyperledger Fabric and R3 Corda</li>
-                <li>Smart contracts reduce transaction time from 10 days to 24 hours</li>
-                <li>AI-powered risk assessment enhances SME financing</li>
-                <li>Decentralized trade ledger prevents fraud and improves transparency</li>
+                <li>🔄 Built on Hyperledger Fabric and R3 Corda for high-security transactions.</li>
+                <li>⚡ Smart contracts reduce transaction time from 10 days to 24 hours.</li>
+                <li>🧠 AI-driven risk assessment enhances SME financing approvals.</li>
+                <li>🛡️ Decentralized ledger eliminates fraud risks and enhances transparency.</li>
+                <li>🔍 AML & KYC integration ensures compliance with global trade regulations.</li>
             </ul>
-        </div>
-        <div class="section contact">
-            <h2>Connect With Us</h2>
-            <a href="https://linkedin.com/in/fintrust-dc-488546355" target="_blank">LinkedIn</a>
-            <a href="https://www.instagram.com/fintrust_dc/" target="_blank">Instagram: @fintrust_dc</a>
-            <a href="https://x.com/fintrust12513" target="_blank">X (Twitter): FinTrust_DC</a>
-            <a href="mailto:fintrustdc@gmail.com">Email: fintrustdc@gmail.com</a>
         </div>
         <div class="footer">
             &copy; 2024 FinTrust. All Rights Reserved.
