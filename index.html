@@ -7,20 +7,27 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #0D1B2A;
+            background-color: #00012a;
             color: #E0E1DD;
             margin: 0;
             padding: 0;
             text-align: center;
         }
         header {
-            padding: 50px;
-            font-size: 2.5em;
-            font-weight: bold;
-            letter-spacing: 2px;
-            background: url('fintrust_logo.png') no-repeat center;
-            background-size: contain;
-            height: 150px;
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        header video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
         }
         .tagline {
             font-size: 1.5em;
@@ -35,6 +42,7 @@
         .section {
             padding: 50px 0;
             border-bottom: 1px solid #86BBD8;
+            position: relative;
         }
         .contact a {
             color: #86BBD8;
@@ -48,85 +56,77 @@
             font-size: 0.9em;
             color: #A0A2A6;
         }
+        .popup {
+            position: absolute;
+            font-size: 1.5em;
+            color: gold;
+            opacity: 0;
+            animation: popUp 1.5s ease-out forwards;
+        }
+        @keyframes popUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            50% { opacity: 1; transform: translateY(-10px); }
+            100% { opacity: 0; transform: translateY(-30px); }
+        }
     </style>
+    <script>
+        function popUpEffect() {
+            for (let i = 0; i < 20; i++) {
+                let popup = document.createElement("div");
+                popup.className = "popup";
+                popup.innerText = "$1.7T";
+                document.querySelector(".market-opportunity").appendChild(popup);
+                popup.style.left = Math.random() * 90 + "%";
+                popup.style.top = Math.random() * 90 + "%";
+                setTimeout(() => popup.remove(), 1500);
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
-        FinTrust
+        <video autoplay loop muted playsinline>
+            <source src="fintrust_logo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </header>
     <div class="tagline">Because Trade Finance Should Just Work.</div>
     <div class="container">
         <div class="section">
-            <h2>Why Trade Finance Needs Innovation</h2>
-            <p>Global trade finance is plagued by inefficiencies, high costs, and fraud. $1.7 trillion in financing requests go unmet annually due to outdated systems. FinTrust is here to change that.</p>
+            <h2>Industry Problems</h2>
+            <p>Global trade finance faces inefficiencies, fraud, and high costs, creating a $1.7 trillion financing gap. Challenges include:</p>
             <ul>
-                <li>LC processing takes 5-10 days</li>
-                <li>Manual documentation & checks cause delays</li>
-                <li>Fraud risks: duplicate invoices, identity theft</li>
-                <li>Regulatory compliance is fragmented</li>
-                <li>High costs exclude SMEs from financing</li>
+                <li>Slow processing times (5-10 days for Letters of Credit)</li>
+                <li>Manual documentation and verification causing bottlenecks</li>
+                <li>Fraud risks: duplicate invoices, falsified documents, and identity fraud</li>
+                <li>Fragmented AML and KYC compliance requirements</li>
+                <li>Exclusion of SMEs due to lack of credit access</li>
             </ul>
         </div>
-        <div class="section">
-            <h2>Our Solution</h2>
-            <p>Powered by blockchain, FinTrust offers:</p>
-            <ul>
-                <li>Smart Contract Payments - Automates LC transactions, reducing time from 10 days to 24 hours.</li>
-                <li>Decentralized Ledger - Immutable records prevent fraud and provide real-time transparency.</li>
-                <li>AI-Powered Risk Scoring - Uses blockchain-based analytics to help SMEs access financing.</li>
-                <li>Tokenized Trade Assets - Converts invoices and LCs into digital assets for instant liquidity.</li>
-                <li>Cross-Border Stablecoin Payments - Reduces reliance on SWIFT, minimizing forex risks.</li>
-            </ul>
-        </div>
-        <div class="section">
+        <div class="section market-opportunity" onclick="popUpEffect()">
             <h2>Market Opportunity</h2>
             <ul>
-                <li>$8 Trillion - Global trade finance market</li>
-                <li>$1.7 Trillion - Unmet trade finance demand</li>
-                <li>90% - Banks exploring blockchain solutions</li>
+                <li>Global trade finance market: $8 trillion annually</li>
+                <li>$1.7 trillion in unmet financing needs</li>
+                <li>90% of banks are exploring blockchain solutions</li>
             </ul>
         </div>
         <div class="section">
             <h2>Technical Feasibility</h2>
             <ul>
                 <li>Built on Hyperledger Fabric and R3 Corda</li>
-                <li>Smart contracts reduce transaction times significantly</li>
-                <li>AI-powered risk assessment for fair lending</li>
-                <li>Decentralized ledger prevents fraud</li>
+                <li>Smart contracts reduce transaction time from 10 days to 24 hours</li>
+                <li>AI-powered risk assessment enhances SME financing</li>
+                <li>Decentralized trade ledger prevents fraud and improves transparency</li>
             </ul>
         </div>
         <div class="section">
-            <h2>Monetization Strategy</h2>
+            <h2>Revenue Model</h2>
             <ul>
                 <li>Transaction Fees - 0.5% per trade</li>
-                <li>Subscription-Based Services - Fraud detection tools for banks</li>
-                <li>Tokenized Invoice Trading - Revenue from digital asset trades</li>
-                <li>Cross-Border Payment Fees - Lower forex costs with stablecoins</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Adoption Strategy</h2>
-            <ol>
-                <li><b>Phase 1 - Pilot:</b> Partner with 5 banks and 3 logistics firms.</li>
-                <li><b>Phase 2 - Regional Expansion:</b> Scale to SMEs and shipping hubs.</li>
-                <li><b>Phase 3 - Global Rollout:</b> Integrate with financial infrastructure worldwide.</li>
-            </ol>
-        </div>
-        <div class="section">
-            <h2>Competitive Advantages</h2>
-            <ul>
-                <li><b>Faster Than Banks:</b> Reduces trade financing from 10 days to under 24 hours.</li>
-                <li><b>More Secure:</b> Blockchain ensures tamper-proof records, preventing fraud.</li>
-                <li><b>More Inclusive:</b> AI-driven credit assessment unlocks SME financing.</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Future Vision</h2>
-            <ul>
-                <li>Integration with DeFi for decentralized SME financing</li>
-                <li>Blockchain-based trade insurance for instant claims processing</li>
-                <li>Support for CBDCs for regulatory-compliant global payments</li>
-                <li>By 2030, FinTrust aims to process $500B+ in annual trade finance</li>
+                <li>Subscription-based fraud detection tools for banks</li>
+                <li>Revenue from tokenized invoice trading</li>
+                <li>Cross-border payment fees using stablecoins</li>
             </ul>
         </div>
         <div class="section contact">
