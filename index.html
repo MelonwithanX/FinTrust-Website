@@ -12,49 +12,55 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            overflow-x: hidden;
         }
         header {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 100vh;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         header video {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%;
-            height: auto;
-            max-height: 200px;
+            width: 100vw;
+            height: 100vh;
             object-fit: cover;
         }
+        .company-name {
+            position: absolute;
+            z-index: 2;
+            font-size: 4em;
+            font-weight: bold;
+            color: #E0E1DD;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
         .tagline {
-            font-size: 1.5em;
+            font-size: 1.8em;
             color: #86BBD8;
-            margin-bottom: 30px;
+            margin: 30px 0;
         }
         .container {
             width: 80%;
             margin: auto;
-            padding: 20px;
+            padding: 40px 0;
         }
         .section {
-            padding: 50px 0;
+            padding: 80px 0;
             border-bottom: 1px solid #86BBD8;
             position: relative;
-        }
-        .contact a {
-            color: #86BBD8;
-            text-decoration: none;
             font-size: 1.2em;
-            display: block;
-            margin: 10px 0;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
         }
-        .footer {
-            padding: 30px;
-            font-size: 0.9em;
-            color: #A0A2A6;
+        .section:hover {
+            transform: scale(1.02);
+            background-color: rgba(134, 187, 216, 0.1);
         }
         .popup {
             position: absolute;
@@ -68,14 +74,30 @@
             50% { opacity: 1; transform: translateY(-10px); }
             100% { opacity: 0; transform: translateY(-30px); }
         }
+        .contact a {
+            color: #86BBD8;
+            text-decoration: none;
+            font-size: 1.5em;
+            display: block;
+            margin: 20px 0;
+            transition: color 0.3s;
+        }
+        .contact a:hover {
+            color: #FFFFFF;
+        }
+        .footer {
+            padding: 40px;
+            font-size: 1.1em;
+            color: #A0A2A6;
+        }
     </style>
     <script>
-        function popUpEffect() {
-            for (let i = 0; i < 20; i++) {
+        function popUpEffect(section) {
+            for (let i = 0; i < 10; i++) {
                 let popup = document.createElement("div");
                 popup.className = "popup";
                 popup.innerText = "$1.7T";
-                document.querySelector(".market-opportunity").appendChild(popup);
+                section.appendChild(popup);
                 popup.style.left = Math.random() * 90 + "%";
                 popup.style.top = Math.random() * 90 + "%";
                 setTimeout(() => popup.remove(), 1500);
@@ -89,21 +111,15 @@
             <source src="fintrust_logo.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+        <div class="company-name">FinTrust</div>
     </header>
     <div class="tagline">Because Trade Finance Should Just Work.</div>
     <div class="container">
-        <div class="section">
+        <div class="section" onclick="popUpEffect(this)">
             <h2>Industry Problems</h2>
-            <p>Global trade finance faces inefficiencies, fraud, and high costs, creating a $1.7 trillion financing gap. Challenges include:</p>
-            <ul>
-                <li>Slow processing times (5-10 days for Letters of Credit)</li>
-                <li>Manual documentation and verification causing bottlenecks</li>
-                <li>Fraud risks: duplicate invoices, falsified documents, and identity fraud</li>
-                <li>Fragmented AML and KYC compliance requirements</li>
-                <li>Exclusion of SMEs due to lack of credit access</li>
-            </ul>
+            <p>Global trade finance faces inefficiencies, fraud, and high costs, creating a $1.7 trillion financing gap.</p>
         </div>
-        <div class="section market-opportunity" onclick="popUpEffect()">
+        <div class="section" onclick="popUpEffect(this)">
             <h2>Market Opportunity</h2>
             <ul>
                 <li>Global trade finance market: $8 trillion annually</li>
@@ -111,22 +127,13 @@
                 <li>90% of banks are exploring blockchain solutions</li>
             </ul>
         </div>
-        <div class="section">
+        <div class="section" onclick="popUpEffect(this)">
             <h2>Technical Feasibility</h2>
             <ul>
                 <li>Built on Hyperledger Fabric and R3 Corda</li>
                 <li>Smart contracts reduce transaction time from 10 days to 24 hours</li>
                 <li>AI-powered risk assessment enhances SME financing</li>
                 <li>Decentralized trade ledger prevents fraud and improves transparency</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Revenue Model</h2>
-            <ul>
-                <li>Transaction Fees - 0.5% per trade</li>
-                <li>Subscription-based fraud detection tools for banks</li>
-                <li>Revenue from tokenized invoice trading</li>
-                <li>Cross-border payment fees using stablecoins</li>
             </ul>
         </div>
         <div class="section contact">
@@ -142,3 +149,4 @@
     </div>
 </body>
 </html>
+
