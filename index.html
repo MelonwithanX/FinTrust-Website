@@ -2,14 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FinTrust | Because Trade Finance Should Just Work</title>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-    /* Base styling */
+    /* 
+      Base styling
+      - Apple-like aesthetic
+      - Dark background with #00012a
+      - Minimalistic, center-aligned layout
+    */
     body {
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #00012a;
       color: #E0E1DD;
       margin: 0;
@@ -21,7 +26,14 @@
       align-items: center;
     }
 
-    /* Video container default: side (for desktop) */
+    /*
+      Video container default: side (for desktop).
+      
+      NOTE on iOS/Android video autoplay restrictions:
+      - We must use 'muted' + 'playsinline' (and 'webkit-playsinline') to allow 
+        any hope of autoplay on mobile. 
+      - Even then, user or OS might block autoplay if in low power mode or data saver mode.
+    */
     .video-container {
       position: fixed;
       top: 0;
@@ -37,28 +49,29 @@
       object-fit: cover;
     }
 
-    /* Content default: right side */
+    /* 
+      Content default: right side 
+      for wider screens (desktop).
+    */
     .content {
       margin-left: 40vw;
       width: 60vw;
       padding: 40px;
     }
 
+    /* Company title (FinTrust) */
     .company-name {
       font-size: 4em;
       font-weight: 600;
       color: #ffffff;
       text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
-      background: linear-gradient(
-        45deg,
-        rgba(0, 1, 42, 0.8),
-        rgba(13, 27, 42, 0.6)
-      );
+      background: linear-gradient(45deg, rgba(0, 1, 42, 0.8), rgba(13, 27, 42, 0.6));
       padding: 15px 30px;
       border-radius: 15px;
       display: inline-block;
       margin-bottom: 30px;
     }
+
     .tagline {
       font-size: 1.5em;
       font-weight: 300;
@@ -67,6 +80,23 @@
       opacity: 0.8;
     }
 
+    /* Button for manual audio start, in case autoplay is blocked */
+    .play-audio {
+      background: #86BBD8;
+      color: #000;
+      border: none;
+      font-size: 1em;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    .play-audio:hover {
+      background: #ffffff;
+    }
+
+    /* Generic sections for “What is FinTrust?”, “Features”, etc. */
     .section {
       padding: 60px 40px;
       font-size: 1.3em;
@@ -115,7 +145,10 @@
       opacity: 0.8;
     }
 
-    /* Pop-up effect styling */
+    /* 
+      Pop-up effect styling 
+      - shows golden circles with text on click 
+    */
     .popup {
       position: absolute;
       padding: 5px 15px;
@@ -146,20 +179,23 @@
       }
     }
 
-    /* Media Query: put video on top for mobile */
+    /* 
+      Media Query: put video container on top for mobile 
+      (screen <= 768px).
+      This ensures the video is no longer "fixed" on the side 
+      but displayed at the top in a 200px container
+    */
     @media (max-width: 768px) {
-      /* Move video container from side to top */
       .video-container {
         position: static;
         width: 100vw;
-        height: 200px; /* you can adjust the height as you like */
+        height: 200px;
       }
       .video-container video {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-      /* Let content flow normally below the video */
       .content {
         margin-left: 0;
         width: 100%;
@@ -168,53 +204,87 @@
     }
   </style>
   <script>
-    // We'll not force audio autoplay, we do iOS-friendly approach
-    document.addEventListener("DOMContentLoaded", function() {
-      let audio = new Audio("mixkit-deep-urban-623.mp3");
+    let audio;
+    document.addEventListener('DOMContentLoaded', function() {
+      /*
+        Prepare audio but do not force autoplay with sound.
+        iOS/Android typically block autoplay unless muted 
+        or there's a user interaction.
+      */
+      audio = new Audio('mixkit-deep-urban-623.mp3');
       audio.loop = true;
-      // Attempting to auto-play (muted won't help if it has sound). 
-      // This will likely be blocked on mobile unless user interacts:
+
+      // Attempt to play (works on some desktops).
       audio.play().catch(() => {
-        console.log("Autoplay prevented on mobile. Provide a button if needed.");
+        console.log('Autoplay blocked on mobile. Provide user interaction to play audio.');
       });
     });
+
+    // Button to start audio manually
+    function playSound() {
+      audio.play().catch(() => {
+        console.log('User gesture required to play audio.');
+      });
+    }
+
+    // Creates multiple pop-ups with text when a section is clicked
     function popUpEffect(section, text) {
       for (let i = 0; i < 10; i++) {
-        let popup = document.createElement("div");
-        popup.className = "popup";
+        let popup = document.createElement('div');
+        popup.className = 'popup';
         popup.innerText = text;
         section.appendChild(popup);
-        popup.style.left = Math.random() * 70 + "%";
-        popup.style.top = Math.random() * 60 + "%";
+        // Random x/y within the section
+        popup.style.left = Math.random() * 70 + '%';
+        popup.style.top = Math.random() * 60 + '%';
+        // Remove after 1.5s
         setTimeout(() => popup.remove(), 1500);
       }
     }
   </script>
 </head>
 <body>
-  <!-- Video container -->
+  <!-- 
+    Video container:
+    - muted, playsinline, webkit-playsinline 
+    - needed for iOS to autoplay 
+  -->
   <div class="video-container">
-    <video 
-      autoplay 
-      loop 
-      muted 
-      playsinline 
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
       webkit-playsinline
     >
-      <source src="fintrust_logo.mp4" type="video/mp4" />
+      <source src="fintrust_logo.mp4" type="video/mp4">
+      <!-- 
+        NOTE: iOS supports H.264/AAC in MP4.
+        If encoded differently, might not autoplay. 
+      -->
       Your browser does not support the video tag.
     </video>
   </div>
-  <!-- Main content -->
+
   <div class="content">
+    <!-- Title & Tagline -->
     <div class="company-name">FinTrust</div>
     <div class="tagline">Because Trade Finance Should Just Work. 💫</div>
 
+    <!-- Manual audio start button for mobile -->
+    <button class="play-audio" onclick="playSound()">Play Sound</button>
+
+    <!-- Section: What is FinTrust? -->
     <div class="section" onclick="popUpEffect(this, '💡 Innovation')">
       <h2>What is FinTrust?</h2>
-      <p>FinTrust is a blockchain-powered trade finance ecosystem designed to enhance transparency, reduce fraud, and unlock liquidity for global trade.</p>
+      <p>
+        FinTrust is a blockchain-powered trade finance ecosystem 
+        designed to enhance transparency, reduce fraud, 
+        and unlock liquidity for global trade.
+      </p>
     </div>
 
+    <!-- Section: Features -->
     <div class="section" onclick="popUpEffect(this, '⚡ Speed')">
       <h2>Features</h2>
       <ul>
@@ -225,6 +295,7 @@
       </ul>
     </div>
 
+    <!-- Section: Implementation -->
     <div class="section" onclick="popUpEffect(this, '🚀 Deployment')">
       <h2>Implementation</h2>
       <ul>
@@ -234,59 +305,63 @@
       </ul>
     </div>
 
+    <!-- Section: Industry Problems -->
     <div class="section" onclick="popUpEffect(this, '⚠️ Challenges')">
       <h2>Industry Problems</h2>
       <ul>
         <li><span>📄</span> Excessive manual paperwork slows down processing times.</li>
-        <li><span>🔍</span> Fraud risks: counterfeit invoices, identity fraud, double financing scams.</li>
+        <li><span>🔍</span> Fraud risks: counterfeit invoices, identity theft, double financing.</li>
         <li><span>💰</span> High intermediary fees limit SME participation.</li>
         <li><span>🌎</span> Global regulatory fragmentation complicates cross-border transactions.</li>
-        <li><span>🖥️</span> Lack of digitalization leads to reconciliation delays.</li>
+        <li><span>🖥️</span> Lack of digitalization leads to inefficient reconciliation and delays.</li>
       </ul>
     </div>
 
+    <!-- Section: Market Opportunity -->
     <div class="section" onclick="popUpEffect(this, '💰 Growth')">
       <h2>Market Opportunity</h2>
       <ul>
-        <li><span>📊</span> Global trade finance market is valued at $8 trillion annually.</li>
+        <li><span>📊</span> Global trade finance is valued at $8 trillion annually.</li>
         <li><span>📉</span> $1.7 trillion in unmet financing needs restricts trade expansion.</li>
         <li><span>🏦</span> 90% of banks exploring blockchain to modernize operations.</li>
-        <li><span>🌍</span> Emerging markets need better access to trade financing solutions.</li>
+        <li><span>🌍</span> Emerging markets need inclusive financing solutions.</li>
       </ul>
     </div>
 
+    <!-- Section: Technical Feasibility -->
     <div class="section" onclick="popUpEffect(this, '🔗 Security')">
       <h2>Technical Feasibility</h2>
       <ul>
-        <li><span>🔄</span> Built on Hyperledger Fabric and R3 Corda for secure transactions.</li>
+        <li><span>🔄</span> Built on Hyperledger Fabric and R3 Corda for high-security transactions.</li>
         <li><span>⚡</span> Smart contracts reduce transaction time from 10 days to 24 hours.</li>
         <li><span>🧠</span> AI-driven risk assessment enhances SME financing approvals.</li>
-        <li><span>🛡️</span> Decentralized ledger eliminates fraud risks and boosts transparency.</li>
-        <li><span>🔍</span> AML & KYC integration ensures compliance with global regulations.</li>
+        <li><span>🛡️</span> Decentralized ledger eliminates fraud risks, boosting transparency.</li>
+        <li><span>🔍</span> AML & KYC integration ensures global compliance automatically.</li>
       </ul>
     </div>
 
+    <!-- Section: Contact Us -->
     <div class="section" onclick="popUpEffect(this, '🤝 Connect')">
       <h2>Contact Us</h2>
       <ul>
-        <li><span>📧</span> <strong>Email: </strong> 
+        <li><span>📧</span> <strong>Email:</strong> 
           <a href="mailto:fintrustdc@gmail.com" style="color: #86BBD8; text-decoration:none;">
-            fintrustdc@gmail.com
+             fintrustdc@gmail.com
           </a>
         </li>
-        <li><span>💼</span> <strong>LinkedIn: </strong> 
+        <li><span>💼</span> <strong>LinkedIn:</strong> 
           <a href="https://linkedin.com/in/fintrust-dc-488546355" target="_blank" style="color:#86BBD8; text-decoration:none;">
-            FinTrust DC
+             FinTrust DC
           </a>
         </li>
-        <li><span>📸</span> <strong>Instagram: </strong> 
+        <li><span>📸</span> <strong>Instagram:</strong> 
           <a href="https://www.instagram.com/fintrust_dc/" target="_blank" style="color:#86BBD8; text-decoration:none;">
-            @fintrust_dc
+             @fintrust_dc
           </a>
         </li>
-        <li><span>🐦</span> <strong>X (Twitter): </strong> 
+        <li><span>🐦</span> <strong>X (Twitter):</strong> 
           <a href="https://x.com/fintrust12513" target="_blank" style="color:#86BBD8; text-decoration:none;">
-            FinTrust_DC
+             FinTrust_DC
           </a>
         </li>
       </ul>
