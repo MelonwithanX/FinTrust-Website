@@ -1,302 +1,288 @@
 <!DOCTYPE html>
-<!-- 1 -->
 <html lang="en">
-<!-- 2 -->
 <head>
-<!-- 3 -->
-    <meta charset="UTF-8">
-    <!-- 4 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 5 -->
-    <title>FinTrust | Because Trade Finance Should Just Work</title>
-    <!-- 6 -->
-    <style>
-    /* 7 - Importing a sleek, modern font */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinTrust | Because Trade Finance Should Just Work</title>
+  <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-    /* 8 - Basic page styling */
     body {
-        font-family: 'Poppins', sans-serif; /* 9 */
-        background-color: #00012a;          /* 10 */
-        color: #E0E1DD;                    /* 11 */
-        margin: 0;                         /* 12 */
-        padding: 0;                        /* 13 */
-        text-align: center;                /* 14 */
-        overflow-x: hidden;                /* 15 */
-        display: flex;                     /* 16 */
-        flex-direction: column;            /* 17 */
-        align-items: center;               /* 18 */
+      font-family: 'Poppins', sans-serif;
+      background-color: #00012a;
+      color: #E0E1DD;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-
-    /* 19 - Video container on the left side */
     .video-container {
-        position: fixed;           /* 20 */
-        top: 0;                    /* 21 */
-        left: 0;                   /* 22 */
-        width: 40vw;               /* 23 */
-        height: 100vh;            /* 24 */
-        overflow: hidden;         /* 25 */
-        z-index: -1;             /* 26 */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -1;
     }
-
-    /* 27 - The background video covering entire container */
     .video-container video {
-        width: 100%; /* 28 */
-        height: 100%; /* 29 */
-        object-fit: cover; /* 30 */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-
-    /* 31 - Content area on the right side */
     .content {
-        margin-left: 40vw; /* 32 */
-        width: 60vw;       /* 33 */
-        padding: 40px;     /* 34 */
+      margin-left: 40vw;
+      width: 60vw;
+      padding: 40px;
     }
-
-    /* 35 - Company name styling */
     .company-name {
-        font-size: 4em;                                   /* 36 */
-        font-weight: 600;                                 /* 37 */
-        color: #ffffff;                                   /* 38 */
-        text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);      /* 39 */
-        background: linear-gradient(45deg, rgba(0, 1, 42, 0.8), rgba(13, 27, 42, 0.6)); /* 40 */
-        padding: 15px 30px;                               /* 41 */
-        border-radius: 15px;                              /* 42 */
-        display: inline-block;                            /* 43 */
-        margin-bottom: 30px;                              /* 44 */
+      font-size: 4em;
+      font-weight: 600;
+      color: #ffffff;
+      text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(45deg, rgba(0, 1, 42, 0.8), rgba(13, 27, 42, 0.6));
+      padding: 15px 30px;
+      border-radius: 15px;
+      display: inline-block;
+      margin-bottom: 30px;
     }
-
-    /* 45 - Tagline styling */
     .tagline {
-        font-size: 1.5em;       /* 46 */
-        font-weight: 300;       /* 47 */
-        color: #86BBD8;         /* 48 */
-        margin: 20px 0 50px;    /* 49 */
-        opacity: 0.8;           /* 50 */
+      font-size: 1.5em;
+      font-weight: 300;
+      color: #86BBD8;
+      margin: 20px 0 50px;
+      opacity: 0.8;
     }
-
-    /* 51 - Section container styling */
     .section {
-        padding: 100px 40px;                              /* 52 */
-        font-size: 1.3em;                                 /* 53 */
-        cursor: pointer;                                  /* 54 */
-        transition: transform 0.3s ease-in-out, background 0.5s ease-in-out; /* 55 */
-        position: relative;                               /* 56 */
-        border-radius: 20px;                              /* 57 */
-        text-align: left;                                 /* 58 */
-        max-width: 800px;                                 /* 59 */
-        width: 100%;                                      /* 60 */
-        line-height: 1.8;                                 /* 61 */
-        background: linear-gradient(to bottom, rgba(13, 27, 42, 0.8), rgba(0, 1, 42, 0.7)); /* 62 */
-        margin-bottom: 40px;                              /* 63 */
+      padding: 100px 40px;
+      font-size: 1.3em;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out, background 0.5s ease-in-out;
+      position: relative;
+      border-radius: 20px;
+      text-align: left;
+      max-width: 800px;
+      width: 100%;
+      line-height: 1.8;
+      background: linear-gradient(to bottom, rgba(13, 27, 42, 0.8), rgba(0, 1, 42, 0.7));
+      margin-bottom: 40px;
     }
-
-    /* 64 - Hover effect for section */
     .section:hover {
-        transform: scale(1.02); /* 65 */
+      transform: scale(1.02);
     }
-
-    /* 66 - Section heading styling */
     .section h2 {
-        text-align: center; /* 67 */
-        font-size: 2em;     /* 68 */
-        margin-bottom: 20px;/* 69 */
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #E0E1DD;
     }
-
-    /* 70 - Unordered list styling */
     .section ul {
-        list-style: none; /* 71 */
-        padding: 0;       /* 72 */
-        margin: 0;        /* 73 */
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-
-    /* 74 - Each list item styling */
     .section li {
-        display: flex;       /* 75 */
-        align-items: center; /* 76 */
-        font-size: 1.2em;    /* 77 */
-        margin-bottom: 15px; /* 78 */
+      display: flex;
+      align-items: center;
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      color: #E0E1DD;
     }
-
-    /* 79 - Icon or emoji styling within a list item */
     .section li span {
-        font-size: 1.5em; /* 80 */
-        margin-right: 10px;/* 81 */
+      font-size: 1.5em;
+      margin-right: 10px;
     }
-
-    /* 82 - Footer styling */
     .footer {
-        margin-top: 50px;      /* 83 */
-        padding: 40px;         /* 84 */
-        font-size: 1.1em;      /* 85 */
-        color: #A0A2A6;        /* 86 */
-        opacity: 0.8;          /* 87 */
+      margin-top: 50px;
+      padding: 40px;
+      font-size: 1.1em;
+      color: #A0A2A6;
+      opacity: 0.8;
     }
-
-    /* 88 - Pop-up effect styling for interactive sections */
+    /* Pop-up Effects */
     .popup {
-        position: absolute;                   /* 89 */
-        width: 60px;                          /* 90 */
-        height: 60px;                         /* 91 */
-        background-color: gold;               /* 92 */
-        border-radius: 50%;                   /* 93 */
-        display: flex;                        /* 94 */
-        align-items: center;                  /* 95 */
-        justify-content: center;              /* 96 */
-        font-size: 0.8em;                     /* 97 */
-        color: #000;                          /* 98 */
-        opacity: 0;                           /* 99 */
-        animation: popUp 1.5s ease-out forwards; /* 100 */
+      position: absolute;
+      padding: 5px 15px;
+      background-color: gold;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9em;
+      color: #000;
+      opacity: 0;
+      animation: popUp 1.5s ease-out forwards;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      white-space: nowrap;
     }
-
-    /* 101 - Pop-up keyframes animation */
     @keyframes popUp {
-        0% {
-            opacity: 0;                       /* 102 */
-            transform: scale(0.5) translateY(20px); /* 103 */
-        }
-        50% {
-            opacity: 1;                       /* 104 */
-            transform: scale(1.2) translateY(-10px); /* 105 */
-        }
-        100% {
-            opacity: 0;                       /* 106 */
-            transform: scale(0.8) translateY(-30px); /* 107 */
-        }
+      0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(20px);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2) translateY(-10px);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-30px);
+      }
     }
-
-    /* 108 - Additional spacing for code length demonstration */
-
-    /* 109 - This style block ensures the doc has ~200 lines of code for demonstration. */
-
-    /* 110 - We handle interplay of sections with popup effects below. */
-
-    /* 111 - We might add more lines to ensure code length. */
-
-    /* 112 - End of style. */
-    </style>
-
-    <!-- 113 - Start of script for background audio, pop up effect, etc. -->
-    <script>
-    // 114 - We'll make sure the audio plays after DOMContentLoaded.
+    /* Button to manually play/unmute audio if needed */
+    .play-audio {
+      background: #86BBD8;
+      color: #000;
+      border: none;
+      font-size: 1em;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    .play-audio:hover {
+      background: #ffffff;
+    }
+  </style>
+  <script>
+    let audio;
     document.addEventListener("DOMContentLoaded", function() {
-        // 115 - Attempt to play background music.
-        let audio = new Audio("mixkit-deep-urban-623.mp3");
-        audio.loop = true;
-        audio.play().catch(() => {
-            console.log("Autoplay prevented. User interaction required.");
-        });
+      // Setup audio
+      audio = new Audio("mixkit-deep-urban-623.mp3");
+      audio.loop = true;
+      // Attempt to play automatically (muted or not)
+      // Many mobile browsers block autoplay with sound unless user interacts
+      audio.play().catch(() => {
+        console.log("Autoplay prevented. Tap 'Play Sound' to unmute.");
+      });
     });
-
-    // 116 - The popUpEffect function for interactive click events.
-    function popUpEffect(section, text) {
-        // 117 - We'll create 10 popups each time.
-        for (let i = 0; i < 10; i++) {
-            let popup = document.createElement("div"); // 118
-            popup.className = "popup";                 // 119
-            popup.innerText = text;                     // 120
-            section.appendChild(popup);                 // 121
-
-            // 122 - Random placement within the section.
-            popup.style.left = Math.random() * 90 + "%"; // 123
-            popup.style.top = Math.random() * 80 + "%";  // 124
-
-            // 125 - Remove after 1.5 seconds.
-            setTimeout(() => popup.remove(), 1500); // 126
-        }
+    function playSound() {
+      audio.play();
     }
-    // 127 - End of script.
-    </script>
+    function popUpEffect(section, text) {
+      for (let i = 0; i < 10; i++) {
+        let popup = document.createElement("div");
+        popup.className = "popup";
+        popup.innerText = text;
+        section.appendChild(popup);
+        popup.style.left = Math.random() * 70 + "%";
+        popup.style.top = Math.random() * 60 + "%";
+        setTimeout(() => popup.remove(), 1500);
+      }
+    }
+  </script>
 </head>
-<!-- 128 - Start of body -->
 <body>
-<!-- 129 - The left side video container -->
-    <div class="video-container">
-        <!-- 130 - The background video -->
-        <video autoplay loop muted playsinline>
-            <!-- 131 -->
-            <source src="fintrust_logo.mp4" type="video/mp4">
-            <!-- 132 -->
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    <!-- 133 - Content area on the right side -->
-    <div class="content">
-        <!-- 134 - Company name and tagline -->
-        <div class="company-name">FinTrust</div>
-        <!-- 135 -->
-        <div class="tagline">Because Trade Finance Should Just Work. 💫</div>
-        <!-- 136 - Section: What is FinTrust? -->
-        <div class="section" onclick="popUpEffect(this, '💡 Innovation')">
-            <!-- 137 -->
-            <h2>What is FinTrust?</h2>
-            <p>FinTrust is a blockchain-powered trade finance ecosystem designed to enhance transparency, reduce fraud, and unlock liquidity for global trade.</p>
-        </div>
-        <!-- 138 - Section: Features -->
-        <div class="section" onclick="popUpEffect(this, '⚡ Speed')">
-            <h2>Features</h2>
-            <ul>
-                <li><span>🔗</span> Secure blockchain ledger for immutable transactions.</li>
-                <li><span>⚡</span> Real-time transaction processing and settlement.</li>
-                <li><span>🛡️</span> AI-driven fraud detection and compliance automation.</li>
-                <li><span>🌎</span> Seamless integration with global trade networks.</li>
-            </ul>
-        </div>
-        <!-- 139 - Section: Implementation -->
-        <div class="section" onclick="popUpEffect(this, '🚀 Deployment')">
-            <h2>Implementation</h2>
-            <ul>
-                <li><span>🚀</span> Phase 1: Establish partnerships with financial institutions.</li>
-                <li><span>🔍</span> Phase 2: Develop AI-powered compliance automation.</li>
-                <li><span>💰</span> Phase 3: Expand access to SME financing globally.</li>
-            </ul>
-        </div>
-        <!-- 140 - Section: Industry Problems -->
-        <div class="section" onclick="popUpEffect(this, '⚠️ Challenges')">
-            <h2>Industry Problems</h2>
-            <ul>
-                <li><span>📄</span> Excessive manual paperwork slows down processing times.</li>
-                <li><span>🔍</span> Fraud risks: counterfeit invoices, identity fraud, and double financing scams.</li>
-                <li><span>💰</span> High intermediary fees increase costs, limiting SME participation.</li>
-                <li><span>🌎</span> Global regulatory fragmentation complicates cross-border transactions.</li>
-                <li><span>🖥️</span> Lack of digitalization leads to inefficient reconciliation and processing delays.</li>
-            </ul>
-        </div>
-        <!-- 141 - Section: Market Opportunity -->
-        <div class="section" onclick="popUpEffect(this, '💰 Growth')">
-            <h2>Market Opportunity</h2>
-            <ul>
-                <li><span>📊</span> The global trade finance market is valued at $8 trillion annually.</li>
-                <li><span>📉</span> $1.7 trillion in unmet financing needs restricts trade expansion.</li>
-                <li><span>🏦</span> 90% of banks are exploring blockchain solutions to modernize operations.</li>
-                <li><span>🌍</span> Emerging markets require improved access to financing solutions.</li>
-            </ul>
-        </div>
-        <!-- 142 - Section: Technical Feasibility -->
-        <div class="section" onclick="popUpEffect(this, '🔗 Security')">
-            <h2>Technical Feasibility</h2>
-            <ul>
-                <li><span>🔄</span> Built on Hyperledger Fabric and R3 Corda for high-security transactions.</li>
-                <li><span>⚡</span> Smart contracts reduce transaction time from 10 days to 24 hours.</li>
-                <li><span>🧠</span> AI-driven risk assessment enhances SME financing approvals.</li>
-                <li><span>🛡️</span> Decentralized ledger eliminates fraud risks and enhances transparency.</li>
-                <li><span>🔍</span> AML & KYC integration ensures compliance with global regulations.</li>
-            </ul>
-        </div>
-        <!-- 143 - Section: Contact Us -->
-        <div class="section" onclick="popUpEffect(this, '🤝 Connect')">
-            <h2>Contact Us</h2>
-            <ul>
-                <li><span>📧</span> <strong>Email:</strong> <a href="mailto:fintrustdc@gmail.com" style="color: #86BBD8; text-decoration:none;">fintrustdc@gmail.com</a></li>
-                <li><span>💼</span> <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/fintrust-dc-488546355" target="_blank" style="color:#86BBD8; text-decoration:none;">FinTrust DC</a></li>
-                <li><span>📸</span> <strong>Instagram:</strong> <a href="https://www.instagram.com/fintrust_dc/" target="_blank" style="color:#86BBD8; text-decoration:none;">@fintrust_dc</a></li>
-                <li><span>🐦</span> <strong>X (Twitter):</strong> <a href="https://x.com/fintrust12513" target="_blank" style="color:#86BBD8; text-decoration:none;">FinTrust_DC</a></li>
-            </ul>
-        </div>
-        <!-- 144 - Footer -->
-        <div class="footer">
-            &copy; 2024 FinTrust. All Rights Reserved.
-</body>
-<!-- 150 - End of body -->
-</html>
+  <!-- Video container: added webkit-playsinline for iOS -->
+  <div class="video-container">
+    <video 
+      autoplay 
+      loop 
+      muted 
+      playsinline 
+      webkit-playsinline
+      >
+      <source src="fintrust_logo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
+  <div class="content">
+    <div class="company-name">FinTrust</div>
+    <div class="tagline">Because Trade Finance Should Just Work. 💫</div>
+    <!-- Button to manually play/unmute audio if needed on mobile -->
+    <button class="play-audio" onclick="playSound()">Play Sound</button>
+
+    <div class="section" onclick="popUpEffect(this, '💡 Innovation')">
+      <h2>What is FinTrust?</h2>
+      <p>FinTrust is a blockchain-powered trade finance ecosystem designed to enhance transparency, reduce fraud, and unlock liquidity for global trade.</p>
+    </div>
+
+    <div class="section" onclick="popUpEffect(this, '⚡ Speed')">
+      <h2>Features</h2>
+      <ul>
+        <li><span>🔗</span> Secure blockchain ledger for immutable transactions.</li>
+        <li><span>⚡</span> Real-time transaction processing and settlement.</li>
+        <li><span>🛡️</span> AI-driven fraud detection and compliance automation.</li>
+        <li><span>🌎</span> Seamless integration with global trade networks.</li>
+      </ul>
+    </div>
+
+    <div class="section" onclick="popUpEffect(this, '🚀 Deployment')">
+      <h2>Implementation</h2>
+      <ul>
+        <li><span>🚀</span> Phase 1: Establish partnerships with financial institutions.</li>
+        <li><span>🔍</span> Phase 2: Develop AI-powered compliance automation.</li>
+        <li><span>💰</span> Phase 3: Expand access to SME financing globally.</li>
+      </ul>
+    </div>
+
+    <div class="section" onclick="popUpEffect(this, '⚠️ Challenges')">
+      <h2>Industry Problems</h2>
+      <ul>
+        <li><span>📄</span> Excessive manual paperwork slows down processing times.</li>
+        <li><span>🔍</span> Fraud risks: counterfeit invoices, identity fraud, and double financing scams.</li>
+        <li><span>💰</span> High intermediary fees increase costs, limiting SME participation.</li>
+        <li><span>🌎</span> Global regulatory fragmentation complicates cross-border transactions.</li>
+        <li><span>🖥️</span> Lack of digitalization leads to inefficient reconciliation and delays.</li>
+      </ul>
+    </div>
+
+    <div class="section" onclick="popUpEffect(this, '💰 Growth')">
+      <h2>Market Opportunity</h2>
+      <ul>
+        <li><span>📊</span> The global trade finance market is valued at $8 trillion annually.</li>
+        <li><span>📉</span> $1.7 trillion in unmet financing needs restricts trade expansion.</li>
+        <li><span>🏦</span> 90% of banks are exploring blockchain solutions to modernize operations.</li>
+        <li><span>🌍</span> Emerging markets need inclusive financing solutions to tap into global trade.</li>
+      </ul>
+    </div>
+
+    <div class="section" onclick="popUpEffect(this, '🔗 Security')">
+      <h2>Technical Feasibility</h2>
+      <ul>
+        <li><span>🔄</span> Built on Hyperledger Fabric and R3 Corda for high-security transactions.</li>
+        <li><span>⚡</span> Smart contracts reduce transaction time from 10 days to 24 hours.</li>
+        <li><span>🧠</span> AI-driven risk assessment enhances SME financing approvals.</li>
+        <li><span>🛡️</span> Decentralized ledger eliminates fraud risks and boosts transparency.</li>
+        <li><span>🔍</span> AML & KYC integration ensures compliance with global regulations.</li>
+      </ul>
+    </div>
+
+    <div class="section" onclick="popUpEffect(this, '🤝 Connect')">
+      <h2>Contact Us</h2>
+      <ul>
+        <li><span>📧</span> <strong>Email:</strong> 
+          <a href="mailto:fintrustdc@gmail.com" style="color: #86BBD8; text-decoration:none;">
+            fintrustdc@gmail.com
+          </a>
+        </li>
+        <li><span>💼</span> <strong>LinkedIn:</strong> 
+          <a href="https://linkedin.com/in/fintrust-dc-488546355" target="_blank" style="color:#86BBD8; text-decoration:none;">
+            FinTrust DC
+          </a>
+        </li>
+        <li><span>📸</span> <strong>Instagram:</strong> 
+          <a href="https://www.instagram.com/fintrust_dc/" target="_blank" style="color:#86BBD8; text-decoration:none;">
+            @fintrust_dc
+          </a>
+        </li>
+        <li><span>🐦</span> <strong>X (Twitter):</strong> 
+          <a href="https://x.com/fintrust12513" target="_blank" style="color:#86BBD8; text-decoration:none;">
+            FinTrust_DC
+          </a>
+        </li>
+      </ul>
+      <p>Tap any section for a quick interactive effect, and press 'Play Sound' to hear the music if autoplay is blocked.</p>
+    </div>
+
+    <div class="footer">
+      &copy; 2024 FinTrust. All Rights Reserved.
+    </div>
+  </div>
+</body>
+</html>
