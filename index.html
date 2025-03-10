@@ -13,27 +13,28 @@
             padding: 0;
             text-align: center;
             overflow-x: hidden;
-        }
-        header {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
             display: flex;
-            align-items: center;
-            justify-content: center;
         }
-        header video {
-            position: absolute;
+        .video-container {
+            position: fixed;
             top: 0;
             left: 0;
+            width: 40vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+        .content {
+            margin-left: 40vw;
+            width: 60vw;
+            padding: 40px;
+        }
         .company-name {
-            position: absolute;
-            z-index: 2;
             font-size: 5em;
             font-weight: bold;
             color: #E0E1DD;
@@ -41,23 +42,19 @@
             background: rgba(0, 1, 42, 0.6);
             padding: 20px 40px;
             border-radius: 10px;
+            margin-bottom: 30px;
         }
         .tagline {
             font-size: 1.8em;
             color: #86BBD8;
             margin: 50px 0;
         }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 40px 0;
-        }
         .section {
-            padding: 100px 0;
-            position: relative;
+            padding: 80px 0;
             font-size: 1.2em;
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
+            position: relative;
         }
         .section:nth-child(even) {
             background: linear-gradient(to right, rgba(13, 27, 42, 0.9), rgba(0, 1, 42, 0.8));
@@ -70,6 +67,25 @@
             border-radius: 80px;
             margin: 50px 0;
             padding: 80px;
+        }
+        .popup {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: gold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            color: #000;
+            opacity: 0;
+            animation: popUp 1.5s ease-out forwards;
+        }
+        @keyframes popUp {
+            0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+            50% { opacity: 1; transform: scale(1.2) translateY(-10px); }
+            100% { opacity: 0; transform: scale(0.8) translateY(-30px); }
         }
         .contact a {
             color: #86BBD8;
@@ -88,22 +104,35 @@
             color: #A0A2A6;
         }
     </style>
+    <script>
+        function popUpEffect(section, text) {
+            for (let i = 0; i < 10; i++) {
+                let popup = document.createElement("div");
+                popup.className = "popup";
+                popup.innerText = text;
+                section.appendChild(popup);
+                popup.style.left = Math.random() * 90 + "%";
+                popup.style.top = Math.random() * 90 + "%";
+                setTimeout(() => popup.remove(), 1500);
+            }
+        }
+    </script>
 </head>
 <body>
-    <header>
+    <div class="video-container">
         <video autoplay loop muted playsinline>
             <source src="fintrust_logo.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+    </div>
+    <div class="content">
         <div class="company-name">FinTrust</div>
-    </header>
-    <div class="tagline">Because Trade Finance Should Just Work.</div>
-    <div class="container">
-        <div class="section">
+        <div class="tagline">Because Trade Finance Should Just Work.</div>
+        <div class="section" onclick="popUpEffect(this, '⚡ Efficiency')">
             <h2>Industry Problems</h2>
             <p>Global trade finance faces inefficiencies, fraud, and high costs, creating a $1.7 trillion financing gap.</p>
         </div>
-        <div class="section">
+        <div class="section" onclick="popUpEffect(this, '💰 $1.7T Market')">
             <h2>Market Opportunity</h2>
             <ul>
                 <li>Global trade finance market: $8 trillion annually</li>
@@ -111,7 +140,7 @@
                 <li>90% of banks are exploring blockchain solutions</li>
             </ul>
         </div>
-        <div class="section">
+        <div class="section" onclick="popUpEffect(this, '🔗 Blockchain Secure')">
             <h2>Technical Feasibility</h2>
             <ul>
                 <li>Built on Hyperledger Fabric and R3 Corda</li>
@@ -127,9 +156,9 @@
             <a href="https://x.com/fintrust12513" target="_blank">X (Twitter): FinTrust_DC</a>
             <a href="mailto:fintrustdc@gmail.com">Email: fintrustdc@gmail.com</a>
         </div>
-    </div>
-    <div class="footer">
-        &copy; 2024 FinTrust. All Rights Reserved.
+        <div class="footer">
+            &copy; 2024 FinTrust. All Rights Reserved.
+        </div>
     </div>
 </body>
 </html>
